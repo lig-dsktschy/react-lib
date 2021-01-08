@@ -5,6 +5,7 @@ import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
 import json from '@rollup/plugin-json'
+import { terser } from 'rollup-plugin-terser'
 
 import pkg from './package.json'
 
@@ -14,12 +15,25 @@ export default {
     {
       file: pkg.main,
       format: 'cjs',
-      sourcemap: true
+      sourcemap: 'hidden',
+
     },
     {
       file: pkg.module,
       format: 'es',
-      sourcemap: true
+      sourcemap: 'hidden',
+    },
+    {
+      file: `dist/fabscape-ui-react.min.js`,
+      format: 'iife',
+      sourcemap: 'hidden',
+      name: 'fabscapeUIReact',
+      globals: {
+        'react': 'React'
+      },
+      plugins: [
+        terser()
+      ]
     }
   ],
   plugins: [
