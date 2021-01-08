@@ -24,7 +24,13 @@ export default {
   plugins: [
     external(),
     postcss({
-      modules: true
+      // Force prefix to CSS classes
+      modules: {
+        generateScopedName: 'fui__[local]'
+      },
+      // Required to enable generateScopedName option
+      // https://github.com/egoist/rollup-plugin-postcss/blob/6480f02681d1526c102f3e99891b788d01031f32/src/postcss-loader.js#L75
+      autoModules: false,
     }),
     url(),
     babel({
