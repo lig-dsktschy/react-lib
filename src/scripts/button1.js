@@ -9,6 +9,8 @@ import ko from '../languages/button1/ko.json'
 import sc from '../languages/button1/sc.json'
 import tc from '../languages/button1/tc.json'
 
+import checkSvg from '../images/button1/check.svg'
+
 const defaultLng = 'en'
 __.init({
   lng: defaultLng,
@@ -20,6 +22,11 @@ __.init({
 
 const Button = props => (
   <button class={$$['button']}>
+    <img
+      src={checkSvg}
+      alt=""
+      className={$$['image']}
+    />
     {__.t('button:Submit', { lng: props.lng || defaultLng })}
   </button>
 )
