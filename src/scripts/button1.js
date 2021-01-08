@@ -20,15 +20,15 @@ __.init({
   if (error) console.error(error)
 })
 
-const Button = props => (
-  <button class={$$['button']}>
+const Button1 = props => (
+  <button class={$$['button1']}>
     <img
       src={checkSvg}
       alt=""
       className={$$['image']}
     />
-    {__.t('button:Submit', { lng: props.lng || defaultLng })}
+    {__.t('button1:Submit', { lng: props.lng || defaultLng })}
   </button>
 )
 
-export default Button
+export default Button1
