@@ -6,6 +6,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
 import json from '@rollup/plugin-json'
 import { terser } from 'rollup-plugin-terser'
+import del from 'rollup-plugin-delete'
 
 import pkg from './package.json'
 
@@ -37,6 +38,10 @@ export default {
     }
   ],
   plugins: [
+    // Clean up directory before output
+    del({
+      targets: ['dist']
+    }),
     external(),
     // Enable to import JSON
     json(),
